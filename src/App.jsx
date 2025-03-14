@@ -46,7 +46,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
-        <Route path="/createpost" element={<CreatePost />} />
+        <Route path="/createpost" element={<CreatePost isAuth={isAuth} />} />
       </Routes>
     </Router>
   );

@@ -10,11 +10,12 @@ const Login = ({setIsAuth}) => {
     const navigate = useNavigate()
    
     const SignIn = ()=>{
+        const logToast = toast.loading("Logging you in...")
         signInWithPopup(auth, provider).then((result)=>{
             localStorage.setItem("isAuth", true);
             setIsAuth(true)
             navigate('/')
-            toast.success(`Welcome ${auth.currentUser.displayName}`)
+            toast.success(`Welcome ${auth.currentUser.displayName}`, {id:logToast})
             
 
         })

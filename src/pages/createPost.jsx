@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { auth, db } from "../firebase/config";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const CreatePost = () => {
+const CreatePost = ({isAuth}) => {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
   const navigate = useNavigate()
@@ -24,6 +24,11 @@ const CreatePost = () => {
   },2000)
     navigate('/')
   };
+  useEffect(()=>{
+   if(!isAuth){
+      navigate('/login')
+    }
+  },[])
   return (
     <div className="bg-white p-6 rounded-lg mt-10 shadow-md shadow-gray-500 w-full max-w-md mx-auto">
       <h1 className="text-2xl text-center font-bold text-black mb-4">
