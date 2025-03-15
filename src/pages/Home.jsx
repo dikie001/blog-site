@@ -50,13 +50,13 @@ const Home = () => {
  
   
 
-  return <>
+  return <div className="items-center justify-center flex flex-col">
  
 
   
   <h1 className="text-3xl lg:text-4xl font-extrabold mt-5 text-center">Blogs</h1>
   
-  <div className="space-y-6  gap-5 mt-5 ml-5 mr-5 flex flex-col lg:w-[60%] m-auto items-center">
+  <div className="space-y-6  gap-5 mt-5 ml-5 mr-5 flex flex-col justify-center lg:w-[60%]   items-center">
 
   {isLoading? <SkeletonLoader/> : postList.map((post, index) => (
     <div 
@@ -72,7 +72,7 @@ const Home = () => {
   ))}
 </div>
 
-</>
+</div>
 };
 
 export default Home;
