@@ -21,7 +21,7 @@ const CreatePost = ({isAuth}) => {
     });
   setTimeout(()=>{
     toast.success("Post created succesfully!", {id:loadingToast})
-  },2000)
+  },300)
     navigate('/')
   };
   useEffect(()=>{

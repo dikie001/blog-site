@@ -7,6 +7,7 @@ import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { Toaster } from "react-hot-toast";
+import Footer from "./components/Footer";
 
 const App = () => {
 
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
         <Route path="/createpost" element={<CreatePost isAuth={isAuth} />} />
       </Routes>
+   
     </Router>
   );
 };
