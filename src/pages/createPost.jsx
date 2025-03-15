@@ -30,7 +30,7 @@ const CreatePost = ({isAuth}) => {
     }
   },[])
   return (
-    <div className="bg-white p-6 rounded-lg mt-10 shadow-md shadow-gray-500 w-full max-w-md mx-auto">
+    <div className="bg-white p-5  rounded-lg  mt-10 shadow-md shadow-gray-500 w-full max-w-lg  mx-auto">
       <h1 className="text-2xl text-center font-bold text-black mb-4">
         Create A Post
       </h1>
@@ -41,7 +41,7 @@ const CreatePost = ({isAuth}) => {
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title..."
-          className="w-full p-2 border shadow-sm shadow-gray-500 border-gray-300 rounded-md focus:outline-none focus:border-purple-600"
+          className="w-full p-2 border shadow-sm shadow-gray-500 border-gray-300 rounded-md focus:outline-none focus:border-2 focus:border-purple-600"
         />
       </div>
 
@@ -50,7 +50,7 @@ const CreatePost = ({isAuth}) => {
         <textarea
           placeholder="Write your post here..."
           onChange={(e) => setPostText(e.target.value)}
-          className="w-full p-2 border resize-none shadow-sm shadow-gray-500 border-gray-300 rounded-md focus:outline-none focus:border-purple-600"
+          className="w-full p-2 border resize-none shadow-sm shadow-gray-500 border-gray-300 rounded-md focus:border-2 focus:outline-none focus:border-purple-600"
         />
       </div>
 

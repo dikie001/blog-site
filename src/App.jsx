@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -10,16 +10,19 @@ import { Toaster } from "react-hot-toast";
 
 const App = () => {
 
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth") === "true");
   const LogOut=()=>{
     signOut(auth).then(()=>{
-      localStorage.clear();
+      localStorage.removeItem("isAuth")
       setIsAuth(false);
       window.location.pathname = "/login"
 
     })
 
   }
+  useEffect(()=>{
+    localStorage.setItem("isAuth", isAuth);
+  },[isAuth])
   return (
 
     <Router>
@@ -36,7 +39,7 @@ const App = () => {
             Login
           </Link>
         ) : (
-          <button onClick={LogOut} className="bg-purple-600 font-bold text-white px-4 py-2 rounded-md hover:bg-gray-900 transition">
+          <button onClick={LogOut} className="bg-purple-600 font-bold text-white px-4 py-2 rounded-full hover:bg-gray-900 transition">
   Log Out
 </button>
 

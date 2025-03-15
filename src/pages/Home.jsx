@@ -7,30 +7,58 @@ import { BsTrash } from "react-icons/bs";
 
 const Home = () => {
   const [postList, setPostList] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false)
   const collectionRef = collection(db, "posts");
   useEffect(() => {
     const getPosts = async () => {
+      setIsLoading(true)
       const data = await getDocs(collectionRef);
       setPostList(data.docs.map((doc)=>({...doc.data(), id:doc.id})));
+    setIsLoading(false)
     };
     getPosts();
   },[]);
-  
+
   const deletePost = async (id)=>{
     const postDoc = doc(db, "posts",id )
     await deleteDoc(postDoc);
     toast.success("Post deleted!")
   }
 
+  const SkeletonLoader = () => {
+    return (<>
+      <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-w-md animate-pulse">
+        <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
+        <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
+        <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+      </div>
+      <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-w-md animate-pulse">
+      <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
+      <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
+      <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+    </div>
+    <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-w-md animate-pulse">
+      <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
+      <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
+      <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+    </div>
+    
+    </>
+    );
+  };
+  
+ 
+  
+
   return <>
  
 
   
   <h1 className="text-3xl lg:text-4xl font-extrabold mt-5 text-center">Blogs</h1>
-  <div className="space-y-6  gap-5 mt-5 m-5 flex flex-col lg:grid md:grid md:grid-cols-2  items-center">
+  
+  <div className="space-y-6  gap-5 mt-5 ml-5 mr-5 flex flex-col lg:w-[60%] m-auto items-center">
 
-  {postList.map((post, index) => (
+  {isLoading? <SkeletonLoader/> : postList.map((post, index) => (
     <div 
       key={index} 
       className="bg-white relative p-6 rounded-lg shadow-md border border-gray-200 w-full "

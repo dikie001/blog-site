@@ -9,7 +9,9 @@ import { toast } from 'react-hot-toast'
 const Login = ({setIsAuth}) => {
     const navigate = useNavigate()
    
-    const SignIn = ()=>{
+    const SignIn = (e)=>{
+        
+
         const logToast = toast.loading("Logging you in...")
         signInWithPopup(auth, provider).then((result)=>{
             localStorage.setItem("isAuth", true);
