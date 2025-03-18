@@ -14,7 +14,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white py-10 mt-10">
+    <footer className="bg-black text-white py-10 mb-0 h-dvh ">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
         
         {/* Left: Copyright & Links */}
