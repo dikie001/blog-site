@@ -25,10 +25,13 @@ const Home = () => {
   }, []);
 
   const deletePost = async (id) => {
+   const deletePost = toast.loading("deleting post...")
     setIsDeleting(true)
     const postDoc = doc(db, "posts", id);
     await deleteDoc(postDoc);
-    toast.success("Post deleted!");
+  
+    toast.success("Post deleted!", {id:deletePost});
+
     setTimeout(()=>{
       navigate(0)
     },1000)
@@ -42,18 +45,19 @@ const Home = () => {
     return (
       <>
  
-      <AiOutlineLoading3Quarters className="animate-spin text-purple-700 font-extrabold text-2xl"/>
-        <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-md:w-[95%] max-lg:w-[80% animate-pulse">
+      <AiOutlineLoading3Quarters className="animate-spin text-purple-700 font-extrabold text-xl"/>
+     
+        <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-md:w-[95%] max-lg:w-[80%] animate-pulse">
           <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
           <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
           <div className="h-4 bg-gray-300 rounded w-5/6"></div>
         </div>
-        <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-md:w-[95%] max-lg:w-[80% animate-pulse">
+        <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-md:w-[95%] max-lg:w-[80%] animate-pulse">
           <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
           <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
           <div className="h-4 bg-gray-300 rounded w-5/6"></div>
         </div>
-        <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-md:w-[95%] max-lg:w-[80% animate-pulse">
+        <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-md:w-[95%] max-lg:w-[80%] animate-pulse">
           <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
           <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
           <div className="h-4 bg-gray-300 rounded w-5/6"></div>
